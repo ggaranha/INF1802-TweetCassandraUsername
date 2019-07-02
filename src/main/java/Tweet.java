@@ -7,24 +7,36 @@ public class Tweet implements Status{
 
     private long id;
 
-    private String username;
-
     private String tweetText;
 
-    private LocalDate tweetDate;
+    private String tweetSource;
+
+    private LocalDate tweetCreatedDate;
     //private String tweetDate;
+
+    private boolean isTweetTruncated;
+
+    private GeoLocation tweetGeo;
+
+    private boolean isTweetFavorited;
+
+    private String tweetUsername;
 
     public Tweet()
     {
 
     }
 
-    public Tweet(long id, LocalDate td, String un, String tt)
+    public Tweet(long id, LocalDate td, String un, String tt, double lat, double lon, String source, boolean truncated, boolean favorited)
     {
         this.id = id;
-        username = un;
+        tweetUsername = un;
         tweetText = tt;
-        tweetDate = td;
+        tweetCreatedDate = td;
+        tweetGeo = new GeoLocation(lat, lon);
+        tweetSource = source;
+        isTweetFavorited = favorited;
+        isTweetTruncated = truncated;
     }
 
     public String getTweetText() {
@@ -32,11 +44,11 @@ public class Tweet implements Status{
     }
 
     public LocalDate getTweetDate() {
-        return tweetDate;
+        return tweetCreatedDate;
     }
 
     public String getUsername() {
-        return username;
+        return tweetUsername;
     }
 
     public void setTweetId(long id) {
@@ -47,12 +59,16 @@ public class Tweet implements Status{
         tweetText = tt;
     }
 
+    public void setTweetGeo(double lat, double lon) {
+        tweetGeo = new GeoLocation(lat, lon);
+    }
+
     public void setTweetDate(LocalDate td) {
-        tweetDate = td;
+        tweetCreatedDate = td;
     }
 
     public void setUsername(String un) {
-        username = un;
+        tweetUsername = un;
     }
 
     public Date getCreatedAt() {
@@ -76,11 +92,11 @@ public class Tweet implements Status{
     }
 
     public String getSource() {
-        return null;
+        return tweetSource;
     }
 
     public boolean isTruncated() {
-        return false;
+        return isTweetTruncated;
     }
 
     public long getInReplyToStatusId() {
@@ -96,7 +112,7 @@ public class Tweet implements Status{
     }
 
     public GeoLocation getGeoLocation() {
-        return null;
+        return tweetGeo;
     }
 
     public Place getPlace() {
@@ -104,7 +120,7 @@ public class Tweet implements Status{
     }
 
     public boolean isFavorited() {
-        return false;
+        return isTweetFavorited;
     }
 
     public boolean isRetweeted() {
