@@ -54,7 +54,7 @@ public class HelloTweet {
             tr.insertTweet(tweet4);
             tr.insertTweetByUsername(tweet4);
             LocalDate ld5 = LocalDate.fromYearMonthDay(2019, 2, 17);
-            Tweet tweet5 = new Tweet(5, ld5, "UserL", "Yep.", -21.386346, -59.366491, "From IPhone", false, false);
+            Tweet tweet5 = new Tweet(5, ld5, "UserT7", "Yep.", -21.386346, -59.366491, "From IPhone", false, false);
             tr.insertTweet(tweet5);
             tr.insertTweetByUsername(tweet5);
             System.out.println("Insert tweets");
@@ -82,8 +82,12 @@ public class HelloTweet {
             tr.deleteTable("tweetsByUsername");
             System.out.println("Delete tweetsByUsername");
 
-            sr.deleteKeyspace("tweetLibrary");
-            System.out.println("Delete keyspace tweetLibrary");
+
+
+
+           // sr.deleteKeyspace("tweetLibrary");
+           // System.out.println("Delete keyspace tweetLibrary");
+
 
         } finally {
             if (cluster != null)
